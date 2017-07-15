@@ -69,16 +69,6 @@ class CalculationsController < ApplicationController
     
     
 
-    def process_square
-        @user_number = params["the_user_number"].to_i**2
-        @squared_number = @user_number**2
-        
-        
-    render("calculations/square_results_template.html.erb")
-    end
-
-
-
     def square_form
     render("calculations/flexible_square_form_template.html.erb")
     end
@@ -86,7 +76,7 @@ class CalculationsController < ApplicationController
 
 
     def process_square
-        @user_number = params["the_user_number"].to_i**2
+        @user_number = params["the_user_number"].to_f
         @squared_number = @user_number**2
         
         
