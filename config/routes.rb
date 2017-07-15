@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get("/word_count/new", { :controller => "calculations", :action => "word_count_form" })
   get("/word_count/results", { :controller => "calculations", :action => "process_word_count" })
   
+  get("/descriptive_stats/new", { :controller => "calculations", :action => "stats_form" })
+  get("/descriptive_stats/results", { :controller => "calculations", :action => "process_stats" })
+  
   # Copy and paste and edit more of these "get"s for the rest of the app features
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

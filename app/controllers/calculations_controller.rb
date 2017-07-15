@@ -150,21 +150,76 @@ class CalculationsController < ApplicationController
     end
 
     def process_word_count
-    
-        @text = params["text"]
-        @special_word = params["special_word"]
-    
-        @word_count = @text.split.count
 
-        @character_count_with_spaces = @text.length
+        @text = params[:text]
+        @lowercase_text = @text.downcase
+        @special_word = params[:special_word]
+        @lowercase_word = @special_word.downcase
+    
+   #     @word_count = @text.split.count    Set the other beloe back to @text if the didn't work
+        @word_count = @lowercase_text.split.count
+        @character_count_with_spaces = @lowercase_text.length
 
-        @character_count_without_spaces = @text.gsub(/\s+/, "").length      
+        @character_count_without_spaces = @lowercase_text.gsub(/\s+/, "").length      
     #    @character_count_without_spaces = @text.gsub(/[^a-z0-9\s]/i, " ")     Tried this gsbu to fix last 2 test case fails but it broke more!
 
-        phrase_split = @text.split                                              # Create an array of words
-        @occurrences=phrase_split.count(@special_word)                          # Count the occurrences of the special word within the array
+        phrase_split = @lowercase_text.split                                              # Create an array of words
+        @occurrences=phrase_split.count(@lowercase_word)                          # Count the occurrences of the special word within the array
 
         render("calculations/word_count_results_template.html.erb")
+    end
+    
+    
+    
+    
+    
+    def stats_form
+        render("calculations/stats_form_template.html.erb")
+    end
+
+    def process_stats
+    
+        @numbers = params[:list_of_numbers]
+        
+        @numbers = params[:list_of_numbers].gsub(',', '').split.map(&:to_f)
+
+    # The numbers the user input are in the array @numbers.
+
+
+    @sorted_numbers = @numbers.sort
+
+    @count = @numbers.count
+
+    @minimum = @numbers.min
+
+    @maximum = @numbers.max
+
+    @range = @numbers.max - @numbers.min
+
+    if 
+      @count.odd?
+      @median = @sorted_numbers[(@count-1)/2]
+    else
+      @median = (@sorted_numbers[(@count-1)/2] + @sorted_numbers[(@count)/2])/2
+    end
+
+    @sum = @numbers.sum
+
+    @mean = @numbers.sum.to_f / @numbers.count.to_f
+
+    numbers_minus_mean = []
+    @numbers.each do |num|
+      delta = (num - @mean)**2
+      numbers_minus_mean.push(delta)
+    @variance = numbers_minus_mean.sum / @count
+    end
+    
+    @standard_deviation = @variance**0.5
+
+    # From Stackoverflow
+    @mode = @numbers.uniq.max_by{ |i| @numbers.count( i ) }
+        
+        render("calculations/stats_results_template.html.erb")
     end
     
     
