@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   get("/payment/new", { :controller => "calculations", :action => "payment_form" })
   get("/payment/results", { :controller => "calculations", :action => "process_payment" })
   
-    get("/random/new", { :controller => "calculations", :action => "random_form" })
-    get("/random/results", { :controller => "calculations", :action => "process_random" })
+  get("/random/new", { :controller => "calculations", :action => "random_form" })
+  get("/random/results", { :controller => "calculations", :action => "process_random" })
+  
+  get("/word_count/new", { :controller => "calculations", :action => "word_count_form" })
+  get("/word_count/results", { :controller => "calculations", :action => "process_word_count" })
   
   # Copy and paste and edit more of these "get"s for the rest of the app features
 

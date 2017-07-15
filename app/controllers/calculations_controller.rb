@@ -144,6 +144,31 @@ class CalculationsController < ApplicationController
     end
 
 
+
+    def word_count_form
+        render("calculations/word_count_form_template.html.erb")
+    end
+
+    def process_word_count
+    
+        @text = params["text"]
+        @special_word = params["special_word"]
+    
+        @word_count = @text.split.count
+
+        @character_count_with_spaces = @text.length
+
+        @character_count_without_spaces = @text.gsub(/\s+/, "").length      
+    #    @character_count_without_spaces = @text.gsub(/[^a-z0-9\s]/i, " ")     Tried this gsbu to fix last 2 test case fails but it broke more!
+
+        phrase_split = @text.split                                              # Create an array of words
+        @occurrences=phrase_split.count(@special_word)                          # Count the occurrences of the special word within the array
+
+        render("calculations/word_count_results_template.html.erb")
+    end
+    
+    
+
 # Keep on adding these def blocks for the other features
 
 end
