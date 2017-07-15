@@ -1,4 +1,7 @@
 class CalculationsController < ApplicationController
+   
+   
+   
     def flex_square
         # The incoming parameters for this action look like {"a_number"=>"5"}
         # Rails stores that hash in a variable called params
@@ -9,6 +12,8 @@ class CalculationsController < ApplicationController
         render("calculations/flexible_square_template.html.erb")
     end
 
+
+
     def flex_square_root
         # The incoming parameters for this action look like {"a_number"=>"5"}
         # Rails stores that hash in a variable called params
@@ -18,6 +23,8 @@ class CalculationsController < ApplicationController
         
         render("calculations/flexible_square_root_template.html.erb")
     end
+
+
 
     def flex_payment
         # The incoming parameters for this action look like {"a_number"=>"5"}
@@ -48,9 +55,19 @@ class CalculationsController < ApplicationController
 
 
 
-    def square_form
-    render("calculations/flexible_square_form_template.html.erb")
+    def flex_random
+        # The incoming parameters for this action look like {"a_number"=>"5"}
+        # They are   min_number   max_number 
+        # Rails stores that hash in a variable called params
+    
+        @min_number = params["min_number"].to_i
+        @max_number = params["max_number"].to_i
+        @random_number=rand(@min_number..@max_number)
+    
+    render("calculations/flexible_random_template.html.erb")
     end
+    
+    
 
     def process_square
         @user_number = params["the_user_number"].to_i**2
@@ -59,6 +76,24 @@ class CalculationsController < ApplicationController
         
     render("calculations/square_results_template.html.erb")
     end
+
+
+
+    def square_form
+    render("calculations/flexible_square_form_template.html.erb")
+    end
+
+
+
+    def process_square
+        @user_number = params["the_user_number"].to_i**2
+        @squared_number = @user_number**2
+        
+        
+    render("calculations/square_results_template.html.erb")
+    end
+
+
 
 # Keep on adding these def blocks for the other features
 
