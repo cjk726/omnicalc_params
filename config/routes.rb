@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get("/payment/new", { :controller => "calculations", :action => "payment_form" })
   get("/payment/results", { :controller => "calculations", :action => "process_payment" })
   
+    get("/random/new", { :controller => "calculations", :action => "random_form" })
+    get("/random/results", { :controller => "calculations", :action => "process_random" })
+  
   # Copy and paste and edit more of these "get"s for the rest of the app features
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

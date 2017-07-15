@@ -127,7 +127,21 @@ class CalculationsController < ApplicationController
 
 
 
+    def random_form
+        render("calculations/flexible_random_form_template.html.erb")
+    end
 
+    def process_random
+        # The incoming parameters for this action look like {"a_number"=>"5"}
+        # They are   min_number   max_number 
+        # Rails stores that hash in a variable called params
+    
+        @min_number = params["min_number"].to_f
+        @max_number = params["max_number"].to_f
+        @random_number=rand(@min_number..@max_number)
+    
+        render("calculations/flexible_random_results_template.html.erb")
+    end
 
 
 # Keep on adding these def blocks for the other features
