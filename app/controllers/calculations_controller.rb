@@ -4,7 +4,7 @@ class CalculationsController < ApplicationController
         # The incoming parameters for this action look like {"a_number"=>"5"}
         # Rails stores that hash in a variable called params
         
-        @user_number = params["a_number"].to_i
+        @user_number = params["a_number"].to_f
         @squared_number = @user_number**2
         
         render("calculations/flexible_square_template.html.erb")
@@ -16,7 +16,7 @@ class CalculationsController < ApplicationController
         # The incoming parameters for this action look like {"a_number"=>"5"}
         # Rails stores that hash in a variable called params
         
-        @user_number = params["a_number"].to_i
+        @user_number = params["a_number"].to_f
         @square_root_number = @user_number**0.5
         
         render("calculations/flexible_square_root_template.html.erb")
