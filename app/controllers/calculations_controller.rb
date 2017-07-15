@@ -1,7 +1,5 @@
 class CalculationsController < ApplicationController
    
-   
-   
     def flex_square
         # The incoming parameters for this action look like {"a_number"=>"5"}
         # Rails stores that hash in a variable called params
@@ -64,26 +62,34 @@ class CalculationsController < ApplicationController
         @max_number = params["max_number"].to_i
         @random_number=rand(@min_number..@max_number)
     
-    render("calculations/flexible_random_template.html.erb")
+        render("calculations/flexible_random_template.html.erb")
     end
     
     
 
     def square_form
-    render("calculations/flexible_square_form_template.html.erb")
+        render("calculations/flexible_square_form_template.html.erb")
     end
-
-
 
     def process_square
         @user_number = params["the_user_number"].to_f
         @squared_number = @user_number**2
         
-        
-    render("calculations/square_results_template.html.erb")
+        render("calculations/square_results_template.html.erb")
     end
 
 
+
+    def square_root_form
+        render("calculations/flexible_square_root_form_template.html.erb")
+    end
+
+    def process_square_root
+        @user_number = params["the_user_number"].to_f
+        @square_root_number = @user_number**0.5
+        
+        render("calculations/square_root_results_template.html.erb")
+    end
 
 # Keep on adding these def blocks for the other features
 
