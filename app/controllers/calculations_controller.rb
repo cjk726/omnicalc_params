@@ -40,7 +40,6 @@ class CalculationsController < ApplicationController
         discount_factor = (((1+periodic_interest_rate)**number_payments)-1) / ((periodic_interest_rate)*(1+periodic_interest_rate)**number_payments)
     
         # P = A / D
-        # @principal=@principal.to_f
         discount_factor=discount_factor.to_f
         @monthly_pmt = @principal / discount_factor
         
