@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  get("/", { :controller => "calculations", :action => "homepage" })  # Trying to get a root homepage
+  
   get("/flexible/square/:a_number", { :controller => "calculations", :action => "flex_square" })
   get("/flexible/square_root/:a_number", { :controller => "calculations", :action => "flex_square_root" })
   get("/flexible/payment/:annual_int_rate/:years/:principal", { :controller => "calculations", :action => "flex_payment" })

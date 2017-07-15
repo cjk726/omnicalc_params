@@ -1,5 +1,14 @@
 class CalculationsController < ApplicationController
    
+
+    def homepage
+        # Root level page that accepts anything after the /
+
+        render("calculations/flexible_square_form_template.html.erb")
+    end
+
+
+   
     def flex_square
         # The incoming parameters for this action look like {"a_number"=>"5"}
         # Rails stores that hash in a variable called params
