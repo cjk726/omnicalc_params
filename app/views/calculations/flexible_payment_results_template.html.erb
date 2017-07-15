@@ -1,0 +1,10 @@
+<h1>Payment Results</h1>
+<h4>APR</h4>
+<p><%= number_to_percentage(@annual_int_rate, precision: 4) %></p>
+<h4>Number of years</h4>
+<p><%= @years %></p>
+<h4>Principal</h4>
+<p><%= number_to_currency(@principal) %></p>
+<h4>Payment</h4>
+<p><%= number_to_currency(@monthly_pmt, precision: 2) %></p>
+<a href="/payment/new">Calculate another payment</a>
