@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  get("/", { :controller => "calculations", :action => "homepage" })  # Trying to get a root homepage
+  get("/", { :controller => "calculations", :action => "homepage" })      # oot url
   
   get("/flexible/square/:a_number", { :controller => "calculations", :action => "flex_square" })
   get("/flexible/square_root/:a_number", { :controller => "calculations", :action => "flex_square_root" })
